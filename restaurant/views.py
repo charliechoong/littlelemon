@@ -57,7 +57,7 @@ def bookings(request):
         data = json.load(request)
         exist = Booking.objects.filter(reservation_date=data['reservation_date']).filter(
             reservation_slot=data['reservation_slot']).exists()
-        if exist == False:
+        if not exist:
             booking = Booking(
                 first_name=data['first_name'],
                 reservation_date=data['reservation_date'],
